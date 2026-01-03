@@ -1,1 +1,59 @@
-// app global css in Sass form
+body
+  background-color: #F3F3F7
+  font-family: "Rubik", sans-serif
+
+.q-tooltip--style
+  color: #ffffff
+  background-color: #505355
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px rgba(0, 0, 0, 0.14), 0 1px 10px rgba(0, 0, 0, 0.12)
+  font-size: 12px
+  font-family: "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif
+
+/* Login Layout */
+.background_login
+  position: absolute
+  width: 100%
+  height: 100%
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(60, 44, 121, 0.3)), url(../assets/background.jpg)
+  background-repeat: no-repeat
+  background-size: cover
+  opacity: 0.9
+  z-index: 0
+
+.version
+  color: #fff
+  position: absolute
+  right: 10px
+  bottom: 10px
+  opacity: 0.8
+
+.version_left
+  color: #fff
+  position: absolute
+  left: 10px
+  bottom: 10px
+  opacity: 0.8
+
+.responsive
+  width: 100%
+  height: auto
+
+
+.q-table thead tr
+  color: #fff
+  background-color: #9D8FC1
+
+.q-table thead tr > th
+  font-size: 13px !important
+  font-weight: bold !important
+
+.q-field__native.required ~ .q-field__label:after
+  content: ' *'
+  color: red
+
+.q-field.required > .q-field__inner > .q-field__control > .q-field__control-container > .q-field__label:after
+  content: ' *'
+  color: red
+
+.row_selected
+  font-weight: bold
