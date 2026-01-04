@@ -21,6 +21,10 @@ interface RentetrixLiteral {
 type TCheckPermission = (...permission: Array<string>) => boolean
 type TConstants = { APP_VERSION: string, SERVER_URL: string, today: string, valid_currencies: Array<string> } & RentetrixLiteral
 type TCan = (...permission: Array<string>) => boolean
-
+interface ICodeValue {
+  value: string,
+  label: string,
+  disable?: boolean
+}
 export type { Nullable, Optional, TMetaFileStorage, TResult, RentetrixLiteral, TCheckPermission,
-TConstants, TCan }
+TConstants, TCan, ICodeValue }

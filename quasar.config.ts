@@ -15,7 +15,8 @@ export default defineConfig((ctx) => {
     boot: [
       'common',
       'i18n',
-      'axios'
+      'axios',
+      'dexie'
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
@@ -40,6 +41,9 @@ export default defineConfig((ctx) => {
       target: {
         browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
         node: 'node20',
+      },
+      env: {
+        SERVER_URL: ctx.dev ? 'http://localhost:3000' : process.env.BACKEND_URL
       },
 
       typescript: {

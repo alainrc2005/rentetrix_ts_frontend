@@ -118,4 +118,6 @@ export default {
 
   system: 'Sistema',
   no_data_found: 'SIN DATOS DISPONIBLES',
+  administration: 'Administración',
+  login: 'Entrar'
 }
