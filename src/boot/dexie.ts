@@ -17,6 +17,7 @@ export default defineBoot(async (/* { app, router, ... } */) => {
     contact_forms: 'id',
     channels: 'id',
     car_status: 'id',
+    sys_language: 'key'
   })
   await db.open().then(async () => {
     console.info('Local Database Opened')

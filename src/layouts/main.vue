@@ -65,21 +65,161 @@
           </q-item>
           <q-separator/>
           <q-expansion-item
+            default-opened
+            :content-inset-level="0.3"
+            header-class="text-primary"
+            icon="mdi-room-service"
+            :label="$t('bookings')">
+            <q-item to="/booking/cars" v-ripple clickable exact>
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-car-clock"/>
+              </q-item-section>
+              <q-item-section>{{ $t('cars') }}</q-item-section>
+            </q-item>
+          </q-expansion-item>
+          <q-separator/>
+          <q-expansion-item
+            v-if="can('view_clients', 'crud_clients', 'view_cars', 'crud_cars', 'view_car_services',
+             'crud_car_services', 'crud_owners', 'view_owners', 'view_pdf', 'crud_pdf', 'view_seasons', 'crud_seasons',
+             'view_fuel_logs', 'crud_fuel_logs')"
+            default-opened
+            :content-inset-level="0.3"
+            header-class="text-primary"
+            icon="mdi-clipboard-list-outline"
+            :label="$t('resources')">
+            <q-item to="/resources/car_calendar" v-ripple clickable exact
+                    v-if="can('view_car_calendar', 'crud_car_calendar')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-calendar-month-outline"/>
+              </q-item-section>
+              <q-item-section>{{ $t('car_calendar') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/clients" v-ripple clickable exact v-if="can('view_clients', 'crud_clients')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-account-star"/>
+              </q-item-section>
+              <q-item-section>{{ $t('clients') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/cars" v-ripple clickable exact v-if="can('view_cars', 'crud_cars')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-car-hatchback"/>
+              </q-item-section>
+              <q-item-section>{{ $t('cars') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/fuel_logs" v-ripple clickable exact v-if="can('view_fuel_logs', 'crud_fuel_logs')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-gas-station"/>
+              </q-item-section>
+              <q-item-section>{{ $t('fuel_logs') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/car_services" v-ripple clickable exact
+                    v-if="can('view_car_services', 'crud_car_services')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-format-list-checkbox"/>
+              </q-item-section>
+              <q-item-section>{{ $t('car_services') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/car/routes" v-ripple clickable exact
+                    v-if="can('view_car_route_prices', 'crud_car_route_prices')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-routes"/>
+              </q-item-section>
+              <q-item-section>{{ $t('car_route_prices') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/seasons" v-ripple clickable exact v-if="can('view_seasons', 'crud_seasons')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-calendar-multiselect"/>
+              </q-item-section>
+              <q-item-section>{{ $t('seasons') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/owners" v-ripple clickable exact v-if="can('crud_owners', 'view_owners')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-account-tie-outline"/>
+              </q-item-section>
+              <q-item-section>{{ $t('owners') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/blacklist" v-ripple clickable exact v-if="can('view_blacklist', 'crud_blacklist')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-account-cancel"/>
+              </q-item-section>
+              <q-item-section>{{ $t('blacklist') }}</q-item-section>
+            </q-item>
+            <q-item to="/resources/contacts" v-ripple clickable exact v-if="can('view_contacts', 'crud_contacts')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-contacts"/>
+              </q-item-section>
+              <q-item-section>{{ $t('contacts') }}</q-item-section>
+            </q-item>
+          </q-expansion-item>
+          <q-separator/>
+          <q-expansion-item
+            v-if="can('crud_categories', 'crud_roles', 'crud_users', 'view_logs', 'view_syslog', 'crud_syslog', 'crud_settings')"
             :content-inset-level="0.3"
             header-class="text-primary"
             icon="mdi-cog-outline"
             :label="$t('administration')">
-            <q-item to="/roles" v-ripple clickable :disable="!can('adm_sh_roles', 'adm_cr_roles')">
+            <q-item to="/admin/app_settings" v-ripple clickable exact v-if="can('crud_settings')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-application-settings-outline"/>
+              </q-item-section>
+              <q-item-section>{{ $t('app_settings') }}</q-item-section>
+            </q-item>
+            <q-item to="/admin/categories" v-ripple clickable exact v-if="can('crud_categories')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-tag-multiple"/>
+              </q-item-section>
+              <q-item-section>{{ $t('categories') }}</q-item-section>
+            </q-item>
+            <q-item to="/admin/languages" v-ripple clickable exact>
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-flag"/>
+              </q-item-section>
+              <q-item-section>{{ $t('app_languages') }}</q-item-section>
+            </q-item>
+            <q-item to="/admin/email_templates" v-ripple clickable exact>
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-email-edit"/>
+              </q-item-section>
+              <q-item-section>{{ $t('email_templates') }}</q-item-section>
+            </q-item>
+            <q-separator/>
+            <q-item to="/admin/roles" v-ripple clickable v-if="can('crud_roles')">
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-shield-lock"/>
               </q-item-section>
               <q-item-section>{{ $t('roles') }}</q-item-section>
             </q-item>
-            <q-item to="/users" v-ripple clickable exact :disable="!can('adm_sh_users', 'adm_cr_users')">
+            <q-item to="/admin/users" v-ripple clickable exact v-if="can('crud_users')">
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-shield-account"/>
               </q-item-section>
               <q-item-section>{{ $t('users') }}</q-item-section>
+            </q-item>
+            <q-item to="/admin/resellers" v-ripple clickable exact v-if="can('crud_users')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-account-cash"/>
+              </q-item-section>
+              <q-item-section>{{ $t('resellers') }}</q-item-section>
+            </q-item>
+            <q-separator/>
+            <q-item to="/admin/actions" v-ripple clickable v-if="can('view_logs')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-fingerprint"/>
+              </q-item-section>
+              <q-item-section>{{ $t('logs') }}</q-item-section>
+            </q-item>
+            <q-item to="/admin/syslogs" v-ripple clickable v-if="can('view_syslog', 'crud_syslog')">
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-note-alert-outline"/>
+              </q-item-section>
+              <q-item-section>{{ $t('syslogs') }}</q-item-section>
+            </q-item>
+            <q-separator/>
+            <q-item to="/admin/resources" v-ripple clickable>
+              <q-item-section avatar>
+                <q-icon color="grey" name="mdi-information-outline"/>
+              </q-item-section>
+              <q-item-section>{{ $t('resources') }}</q-item-section>
             </q-item>
           </q-expansion-item>
           <q-separator/>

@@ -9,5 +9,5 @@ export default defineBoot(async ({ app }) => {
     const user = await RentetrixCrypto.cryptoAesDecrypt(ksec, SessionStorage.getItem('car') || '')
     store.$patch({ logged: true, ...user })
   }
-  app.provide('can', (...permission: Array<string>): boolean => store.checkPermission(permission))
+  app.provide('can', (...permission: Array<string>): boolean => store.checkPermission(permission) || store.isSuperAdmin)
 })
