@@ -16,7 +16,8 @@ export default defineConfig((ctx) => {
       'common',
       'i18n',
       'axios',
-      'dexie'
+      'dexie',
+      'session',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css

@@ -5,7 +5,7 @@ import type { ICodeValue } from 'src/types'
 
 export async function syncCategories() {
   console.info('syncCategories ')
-  return api.post(apiVersion + '/categories')
+  return api.get(apiVersion + '/categories')
     .then(async (r) => {
       if (r.data.code !== 'Ok') return false
       for (const name in r.data.lookups) {

@@ -167,7 +167,7 @@ function dataUrlToBlob(dataUrl: string): Blob {
    const byteCharacters = atob(arr?.[1] || '')
    const byteNumbers = new Array(byteCharacters.length)
    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i)
+      byteNumbers[i] = byteCharacters.codePointAt(i)
    }
    return new Blob([new Uint8Array(byteNumbers)], { type: mime || 'application/octet-stream' })
 }
@@ -211,4 +211,8 @@ const TResults = {
 
 const ksec = 'f0fcdd65e29c4c8aa0c24246d59ff1fc2f7464300b0f288d6495a1f7dd4509b5'
 
-export { TResults, validateFile, dataUrlToBlob, buildParams, initPagination, ksec }
+async function delay(seconds: number) {
+  return new Promise(resolve => setTimeout(resolve, seconds * 1000))
+}
+
+export { TResults, validateFile, dataUrlToBlob, buildParams, initPagination, ksec, delay }

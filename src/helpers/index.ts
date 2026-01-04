@@ -1,4 +1,5 @@
 export * from './common'
-export * from './commands'
+export * from './command'
+export * from './wrapper.command'
 export * from './rentetrix.crypto'
 export * from './exception'

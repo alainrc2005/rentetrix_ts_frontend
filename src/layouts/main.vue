@@ -9,6 +9,7 @@
         <q-space/>
         <q-btn outline rounded class="q-mr-xs text-grey" size="sm" :label="store.name" v-if="$q.screen.gt.xs"/>
         <q-avatar size="26px" class="cursor-pointer">
+          <img :src="avatar" alt="Rentetrix"/>
           <q-menu anchor="top end" self="top end">
             <q-list dense class="text-grey-8" style="min-width: 100px">
               <q-item aria-hidden="true" class="bg-secondary">
@@ -110,6 +111,7 @@ import { useRoute, useRouter } from 'vue-router'
 import type { TCheckPermission } from 'src/types'
 import { useAppStore } from 'stores/app-store'
 import { v_barStyle, v_thumbStyle } from 'src/helpers/common'
+import { api } from 'boot/axios'
 
 const can = inject('can') as TCheckPermission
 const route = useRoute()
@@ -118,6 +120,10 @@ const drawer = ref(false)
 const store = useAppStore()
 
 const styleToolbar = computed(() => ({borderRadius: '4px', left: drawer.value ? '290px' : ''}))
+const avatar = computed(() => {
+  const urlAvatar = `/api/users/photo/${store.userid ?? 0}`
+  return `${api.defaults.baseURL}${urlAvatar}`
+})
 </script>
 
 <style lang="sass" scoped>

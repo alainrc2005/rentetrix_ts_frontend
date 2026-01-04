@@ -51,7 +51,10 @@ import { SessionStorage } from 'quasar'
 import useVuelidate from '@vuelidate/core'
 import { required, email, minLength } from '@vuelidate/validators'
 import { useAppStore } from 'stores/app-store'
-import { AskFor, appError, appSuccess, TResults, RentetrixCrypto, ksec, executeCmdData } from 'src/helpers'
+import {
+  AskFor, appError, appSuccess, TResults, RentetrixCrypto, ksec, executeCmd,
+  RentetrixHttpService
+} from 'src/helpers'
 import { useRouter } from 'vue-router'
 import { i18n } from 'src/i18n'
 import type { TConstants } from 'src/types'
@@ -85,7 +88,7 @@ const router = useRouter()
 
 async function checkUser() {
   if (v$.value.$invalid) return
-  return executeCmdData('/auth/login', login, async r => {
+  return executeCmd(RentetrixHttpService.post('/auth/login', login), async r => {
     SessionStorage.set('car', r.row)
     const patch = await RentetrixCrypto.cryptoAesDecrypt(ksec, r.row)
     store.$patch({ ...patch, logged: true, drawer: true })
@@ -100,7 +103,7 @@ function forgotPassword() {
   AskFor('attention', i18n.global.t('ays_password_mail'))
     .onOk(() => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      executeCmdData('/users/forgot-password', { email: login.email }, r => {
+      executeCmd(RentetrixHttpService.post('/users/forgot-password', { email: login.email }), r => {
         if (r.code !== TResults.OK) return appError(checkError(r.code))
         appSuccess('s_send_password')
       }, null, 'e_send_email').then(() => void 0)
