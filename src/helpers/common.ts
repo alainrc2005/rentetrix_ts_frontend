@@ -1,6 +1,6 @@
 import type {
    QNotifyUpdateOptions, QNotifyAction, QNotifyOptions, VueStyleObjectProp,
-   QDialogOptions
+   QDialogOptions, QVueGlobals
 } from 'quasar'
 import {
    Dialog, Notify
@@ -122,23 +122,6 @@ export const modalWidth: { [key: string]: number } = {
    xl: 1536
 }
 
-export type TPagination = {
-   sortBy: string,
-   descending: boolean,
-   page: number,
-   rowsPerPage: number,
-   rowsNumber: number
-}
-
-function initPagination(sortBy = 'name', descending = false, rowsPerPage = 20): TPagination {
-   return {
-      sortBy,
-      descending,
-      page: 1,
-      rowsPerPage,
-      rowsNumber: 0
-   }
-}
 
 function buildParams(pagination: RentetrixLiteral, search: string, selectors: Nullable<RentetrixLiteral> = null): string {
    const params: string[] = [
@@ -215,4 +198,44 @@ async function delay(seconds: number) {
   return new Promise(resolve => setTimeout(resolve, seconds * 1000))
 }
 
-export { TResults, validateFile, dataUrlToBlob, buildParams, initPagination, ksec, delay }
+function ObjectAssign(target: RentetrixLiteral, source: RentetrixLiteral) {
+  Object.getOwnPropertyNames(target).forEach(property => {
+    // eslint-disable-next-line no-prototype-builtins
+    if (source.hasOwnProperty(property) && property !== '__ob__') {
+      if (source[property] == null || typeof source[property] !== 'object' || Array.isArray(source[property])) {
+        target[property] = source[property]
+      } else {
+        target[property] = { ...source[property] }
+      }
+    }
+  })
+  return target
+}
+
+const editorLanguageToolbar = ($q: QVueGlobals) => ([
+  ['print', 'fullscreen'],
+  ['left', 'center', 'right', 'justify'],
+  ['bold', 'italic', 'strike', 'underline', 'subscript', 'superscript'],
+  [
+    {
+      icon: $q.iconSet.editor.fontSize,
+      fixedLabel: true,
+      fixedIcon: true,
+      list: 'no-icons',
+      options: [
+        'size-1',
+        'size-2',
+        'size-3',
+        'size-4',
+        'size-5',
+        'size-6',
+        'size-7'
+      ]
+    }
+  ],
+  ['unordered', 'ordered', 'outdent', 'indent'],
+  ['undo', 'redo', 'viewsource']
+])
+
+export { TResults, validateFile, dataUrlToBlob, buildParams, ksec, delay, ObjectAssign,
+editorLanguageToolbar }

@@ -26,5 +26,7 @@ interface ICodeValue {
   label: string,
   disable?: boolean
 }
+type VoidFunction = () => void
+
 export type { Nullable, Optional, TMetaFileStorage, TResult, RentetrixLiteral, TCheckPermission,
-TConstants, TCan, ICodeValue }
+TConstants, TCan, ICodeValue, VoidFunction }

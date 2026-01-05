@@ -7,7 +7,7 @@
           {{ $q.lang.table.noData }}
           <slot name="actions"></slot>
         </div>
-        <q-img src="~assets/no_data.svg" alt="FMS" class="responsive"/>
+        <q-img src="src/assets/no_data.svg" alt="FMS" class="responsive"/>
       </div>
     </div>
   </Transition>

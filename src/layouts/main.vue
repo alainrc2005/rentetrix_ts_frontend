@@ -170,7 +170,7 @@
               </q-item-section>
               <q-item-section>{{ $t('categories') }}</q-item-section>
             </q-item>
-            <q-item to="/admin/languages" v-ripple clickable exact>
+            <q-item to="/admin/language" v-ripple clickable exact>
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-flag"/>
               </q-item-section>
@@ -222,13 +222,6 @@
               <q-item-section>{{ $t('resources') }}</q-item-section>
             </q-item>
           </q-expansion-item>
-          <q-separator/>
-          <q-item to="/system" v-ripple clickable>
-            <q-item-section avatar>
-              <q-icon color="primary" name="mdi-cpu-64-bit"/>
-            </q-item-section>
-            <q-item-section>{{ $t('system') }}</q-item-section>
-          </q-item>
           <q-separator/>
           <q-item to="/logout" v-ripple clickable>
             <q-item-section avatar>
