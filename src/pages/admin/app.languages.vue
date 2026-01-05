@@ -27,7 +27,7 @@ const columns = computed(() => initAppLanguageColumns())
 const { table, dataReady, pagination, onRequest } = useDatatable('/language', 'key', true, terms)
 
 async function edit(id: number) {
-  return executeCmd(RentetrixHttpService.get(`/categories/language/fetch/${id}`), r => {
+  return executeCmd(RentetrixHttpService.get(`/language/fetch/${id}`), r => {
     ObjectAssign(row, r.row)
     v$.value.$reset()
     dlg.value?.show()
@@ -35,7 +35,7 @@ async function edit(id: number) {
 }
 
 async function save() {
-  return executeCmd(RentetrixHttpService.put('/categories/language/update', { row }), async () => {
+  return executeCmd(RentetrixHttpService.put(`/language/update/${row.id}`, { ...row }), async () => {
     appSuccess('s_successful')
     dlg.value?.hide()
     return onRequest({ pagination: pagination.value })

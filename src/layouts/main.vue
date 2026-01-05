@@ -67,7 +67,7 @@
           <q-expansion-item
             default-opened
             :content-inset-level="0.3"
-            header-class="text-primary"
+            header-class="text-purple"
             icon="mdi-room-service"
             :label="$t('bookings')">
             <q-item to="/booking/cars" v-ripple clickable exact>
@@ -82,9 +82,8 @@
             v-if="can('view_clients', 'crud_clients', 'view_cars', 'crud_cars', 'view_car_services',
              'crud_car_services', 'crud_owners', 'view_owners', 'view_pdf', 'crud_pdf', 'view_seasons', 'crud_seasons',
              'view_fuel_logs', 'crud_fuel_logs')"
-            default-opened
             :content-inset-level="0.3"
-            header-class="text-primary"
+            header-class="text-purple"
             icon="mdi-clipboard-list-outline"
             :label="$t('resources')">
             <q-item to="/resources/car_calendar" v-ripple clickable exact
@@ -155,7 +154,7 @@
           <q-expansion-item
             v-if="can('crud_categories', 'crud_roles', 'crud_users', 'view_logs', 'view_syslog', 'crud_syslog', 'crud_settings')"
             :content-inset-level="0.3"
-            header-class="text-primary"
+            header-class="text-purple"
             icon="mdi-cog-outline"
             :label="$t('administration')">
             <q-item to="/admin/app_settings" v-ripple clickable exact v-if="can('crud_settings')">

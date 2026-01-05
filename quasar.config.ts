@@ -114,16 +114,18 @@ export default defineConfig((ctx) => {
     framework: {
       config: {
         brand: {
-          primary: '#3C2C79',
-          secondary: '#9D8FC1',
-          accent: '#D946EF',
+          primary: '#14B6DC',
+          secondary: '#26a69a',
+          accent: '#9c27b0',
 
-          dark: '#1A1A2E',
+          dark: '#1d1d1d',
 
-          positive: '#27AE60',
-          negative: '#E74C3C',
-          info: '#3498DB',
-          warning: '#F39C12'
+          positive: '#21ba45',
+          negative: '#c10015',
+          info: '#31ccec',
+          warning: '#f2c037',
+
+          card: '#00ACA2'
         }
       },
 

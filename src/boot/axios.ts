@@ -3,6 +3,7 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 import type { TConstants } from 'src/types'
 import { useAppStore } from 'stores/app-store'
 import { appError } from 'src/helpers'
+import { SessionStorage } from 'quasar'
 
 const constant: TConstants = {
   APP_VERSION: '1.3.1',
@@ -37,13 +38,17 @@ export default defineBoot(({ app }) => {
   api.interceptors.response.use((response) => {
     if (response.status === 401) {
       appError('e_session_expired', 5_000, 'center')
-      globalThis.location.href = '/logout'
+      store.$reset()
+      SessionStorage.remove('car')
+      globalThis.location.href = '/login'
     }
     return response
   }, (error) => {
     if (error.response?.status === 401) {
       appError('e_session_expired', 5_000, 'center')
-      globalThis.location.href = '/logout'
+      store.$reset()
+      SessionStorage.remove('car')
+      globalThis.location.href = '/login'
     }
     return Promise.reject(new Error(JSON.stringify(error)))
   })
