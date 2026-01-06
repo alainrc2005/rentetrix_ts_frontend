@@ -64,6 +64,20 @@ class RentetrixHttpService {
       )
    }
 
+  /**
+   * Servicio Http.PUT
+   * @param action store = post, update = put
+   * @param path Ruta de acceso a invocar
+   * @param data Datos
+   */
+  static async postOrPut(action: string, path: string, data: any): Promise<TResult> {
+    return action === 'store' ? firstValueFrom(
+      from(api.postForm<TResult>(apiVersion + path, data)).pipe(map(res => res.data))
+    ) : firstValueFrom(
+      from(api.put<TResult>(apiVersion + path, data)).pipe(map(res => res.data))
+    )
+  }
+
    /**
     * Servicio Http.DELETE
     * @param path Ruta de acceso a invocar

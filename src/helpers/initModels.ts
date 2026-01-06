@@ -112,5 +112,36 @@ function initAppLanguage() {
   return { id: undefined, key: undefined, name_es: '', name_en: '', name_fr: '', type: undefined }
 }
 
-export { initPagination, initProfile, initUser, initRole, initChangePassword, initAppLanguage }
-export type { TUser, TUserProfile, TRole, TPermission, TOptionValue, TChangePassword, TAppLanguage, TPagination }
+type TEmailTemplate = {
+  id: Optional<number>
+  name: Optional<string>
+  subject_en: Optional<string>
+  subject_es: Optional<string>
+  subject_fr: Optional<string>
+  mail_en: string
+  mail_es: string
+  mail_fr: string
+  action_en: Optional<string>
+  action_es: Optional<string>
+  action_fr: Optional<string>
+}
+
+function initEmailTemplate(): TEmailTemplate {
+  return {
+    id: undefined,
+    name: undefined,
+    subject_en: undefined,
+    subject_es: undefined,
+    subject_fr: undefined,
+    mail_en: '',
+    mail_es: '',
+    mail_fr: '',
+    action_en: undefined,
+    action_es: undefined,
+    action_fr: undefined
+  }
+}
+
+export { initPagination, initProfile, initUser, initRole, initChangePassword, initAppLanguage, initEmailTemplate }
+export type { TUser, TUserProfile, TRole, TPermission, TOptionValue, TChangePassword, TAppLanguage, TPagination,
+  TEmailTemplate }

@@ -175,7 +175,7 @@
               </q-item-section>
               <q-item-section>{{ $t('app_languages') }}</q-item-section>
             </q-item>
-            <q-item to="/admin/email_templates" v-ripple clickable exact>
+            <q-item to="/admin/email-template" v-ripple clickable exact>
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-email-edit"/>
               </q-item-section>

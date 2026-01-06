@@ -68,8 +68,8 @@ onMounted(async () => {
       </template>
       <template #form>
         <div class="row fit" v-if="showTerms">
-          <div class="col-md-3 col-sm-6 col-xs-12 q-pa-sm  ">
-            <q-input v-model="terms.search" debounce="750" :label="$t('type_here')" filled clearable/>
+          <div class="col-12 q-pa-sm">
+            <q-input v-model="terms.search" debounce="750" :label="$t('type_here')" filled clearable autofocus/>
           </div>
         </div>
         <arc-no-data-found :show="table.length===0 && dataReady"/>
@@ -125,19 +125,19 @@ onMounted(async () => {
           <arc-dialog ref="dlg" size="md" :title="$t('language')" :disable="v$.$invalid" @save="save"
                       show-btn-maximize>
             <template #section>
-              <div class="bg-info text-black q-pa-md text-center rounded-borders">{{ $t('spanish') }}</div>
+              <div class="bg-teal-4 text-white q-pa-xs text-center rounded-borders">{{ $t('spanish') }}</div>
               <q-input v-if="row.type==='text'" autofocus v-model="v$.row.name_es.$model"
                        :error="v$.row.name_es.$error" hide-bottom-space filled/>
               <q-editor v-else v-model="v$.row.name_es.$model" :label="$t('spanish')" toolbar-outline
                         square class="q-mt-md" min-height="10em" :toolbar="editorLanguageToolbar($q)"
                         :dense="$q.screen.lt.md"/>
-              <div class="bg-info text-black q-pa-md text-center rounded-borders">{{ $t('english') }}</div>
+              <div class="bg-teal-4 text-white q-pa-xs text-center rounded-borders">{{ $t('english') }}</div>
               <q-input v-if="row.type==='text'" autofocus v-model="v$.row.name_en.$model"
                        :error="v$.row.name_en.$error" hide-bottom-space filled/>
               <q-editor v-else v-model="v$.row.name_en.$model" :label="$t('english')" toolbar-outline
                         square class="q-mt-md" min-height="10em" :toolbar="editorLanguageToolbar($q)"
                         :dense="$q.screen.lt.md"/>
-              <div class="bg-info text-black q-pa-md text-center rounded-borders">{{ $t('french') }}</div>
+              <div class="bg-teal-4 text-white q-pa-xs text-center rounded-borders">{{ $t('french') }}</div>
               <q-input v-if="row.type==='text'" autofocus v-model="v$.row.name_fr.$model"
                        :error="v$.row.name_fr.$error" hide-bottom-space filled/>
               <q-editor v-else v-model="v$.row.name_fr.$model" :label="$t('french')" toolbar-outline

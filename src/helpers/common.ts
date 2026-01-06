@@ -7,8 +7,7 @@ import {
 } from 'quasar'
 import { i18n } from 'src/i18n'
 import type { Optional, Nullable, RentetrixLiteral } from 'src/types'
-// https://github.com/quasarframework/quasar/issues/14122
-//import Notify from 'quasar/src/plugins/notify/Notify'
+import moment from 'moment'
 
 let dismiss: (props?: QNotifyUpdateOptions) => void = () => void 0
 const closeButton: Array<QNotifyAction> = [{
@@ -237,5 +236,16 @@ const editorLanguageToolbar = ($q: QVueGlobals) => ([
   ['undo', 'redo', 'viewsource']
 ])
 
+function formatDateTime(datetime: string): string {
+  return moment(datetime, 'YYYY-MM-DD HH:mm:ss')
+    .format('DD/MM/YYYY HH:mm')
+}
+
+function isHtmlEmpty(html: string): boolean {
+  const doc = new DOMParser().parseFromString(html, 'text/html')
+  const str = doc.body.textContent || ''
+  return str.trim().length === 0
+}
+
 export { TResults, validateFile, dataUrlToBlob, buildParams, ksec, delay, ObjectAssign,
-editorLanguageToolbar }
+editorLanguageToolbar, formatDateTime, isHtmlEmpty }
