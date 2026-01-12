@@ -152,7 +152,8 @@
           </q-expansion-item>
           <q-separator/>
           <q-expansion-item
-            v-if="can('crud_categories', 'crud_roles', 'crud_users', 'view_logs', 'view_syslog', 'crud_syslog', 'crud_settings')"
+            v-if="can('crud_categories', 'crud_roles', 'crud_users', 'view_logs', 'view_syslog', 'crud_syslog', 'crud_settings',
+            'crud_language')"
             :content-inset-level="0.3"
             header-class="text-purple"
             icon="mdi-cog-outline"
@@ -169,32 +170,32 @@
               </q-item-section>
               <q-item-section>{{ $t('categories') }}</q-item-section>
             </q-item>
-            <q-item to="/admin/language" v-ripple clickable exact>
+            <q-item to="/admin/language" v-ripple clickable exact v-if="can('crud_language')">
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-flag"/>
               </q-item-section>
               <q-item-section>{{ $t('app_languages') }}</q-item-section>
             </q-item>
-            <q-item to="/admin/email-template" v-ripple clickable exact>
+            <q-item to="/admin/email-template" v-ripple clickable exact v-if="can('crud_email_template', 'view_email_template')">
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-email-edit"/>
               </q-item-section>
               <q-item-section>{{ $t('email_templates') }}</q-item-section>
             </q-item>
             <q-separator/>
-            <q-item to="/admin/roles" v-ripple clickable v-if="can('crud_roles')">
+            <q-item to="/admin/roles" v-ripple clickable v-if="can('crud_roles', 'view_roles')">
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-shield-lock"/>
               </q-item-section>
               <q-item-section>{{ $t('roles') }}</q-item-section>
             </q-item>
-            <q-item to="/admin/users" v-ripple clickable exact v-if="can('crud_users')">
+            <q-item to="/admin/users" v-ripple clickable exact v-if="can('crud_users', 'view_users')">
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-shield-account"/>
               </q-item-section>
               <q-item-section>{{ $t('users') }}</q-item-section>
             </q-item>
-            <q-item to="/admin/resellers" v-ripple clickable exact v-if="can('crud_users')">
+            <q-item to="/admin/resellers" v-ripple clickable exact v-if="can('crud_users', 'view_users')">
               <q-item-section avatar>
                 <q-icon color="grey" name="mdi-account-cash"/>
               </q-item-section>

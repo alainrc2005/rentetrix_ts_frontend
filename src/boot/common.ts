@@ -9,6 +9,7 @@ import arcDialog from 'components/arcDialog.vue'
 import arcWindow from 'components/arcWindow.vue'
 import '@fontsource/rubik'
 import 'animate.css'
+import type { Router, RouteLocationNormalizedLoaded } from 'vue-router'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
@@ -22,6 +23,8 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     $q: QVueGlobals
     $t: Composer['t']
+    $router: Router
+    $route: RouteLocationNormalizedLoaded
   }
 }
 

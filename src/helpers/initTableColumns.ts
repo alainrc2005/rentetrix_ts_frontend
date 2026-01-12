@@ -53,4 +53,63 @@ function initEmailTemplateColumns(): QTableProps['columns'] {
   ]
 }
 
-export { initAppLanguageColumns, initEmailTemplateColumns }
+function initRolesColumns(): QTableProps['columns'] {
+  return [
+    {
+      name: 'description',
+      label: i18n.global.t('name'),
+      field: 'description',
+      align: 'left',
+      sortable: true
+    },
+    {
+      name: 'actions',
+      label: i18n.global.t('actions'),
+      field: 'actions',
+      align: 'center',
+      sortable: false
+    }
+  ]
+}
+
+function initUserColumns(): QTableProps['columns'] {
+  return [
+    {
+      name: 'name',
+      label: i18n.global.t('full_name'),
+      field: 'name',
+      align: 'left',
+      sortable: true
+    },
+    {
+      name: 'email',
+      label: i18n.global.t('email'),
+      field: 'email',
+      align: 'left',
+      sortable: true
+    },
+    {
+      name: 'phone',
+      label: i18n.global.t('phone'),
+      field: 'phone',
+      align: 'center',
+      sortable: true
+    },
+    {
+      name: 'status',
+      label: i18n.global.t('active'),
+      field: 'active',
+      align: 'center',
+      sortable: true
+    },
+    {
+      name: 'actions',
+      label: i18n.global.t('actions'),
+      field: 'actions',
+      align: 'center',
+      sortable: false
+    }
+  ]
+}
+
+export { initAppLanguageColumns, initEmailTemplateColumns, initRolesColumns, initUserColumns }

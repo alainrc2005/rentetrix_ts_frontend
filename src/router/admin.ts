@@ -1,5 +1,7 @@
 import AppLanguage from 'pages/admin/app.languages.vue'
 import EmailTemplate from 'pages/admin/email.templates.vue'
+import Roles from 'pages/admin/roles.vue'
+import Users from 'pages/admin/users.vue'
 
 export default [
   {
@@ -7,8 +9,7 @@ export default [
     component: AppLanguage,
     meta: {
       auth: true,
-      roles: ['super-admin'],
-      permissions: ['crud_users']
+      permissions: ['crud_language']
     }
   },
   {
@@ -16,8 +17,23 @@ export default [
     component: EmailTemplate,
     meta: {
       auth: true,
-      roles: ['super-admin'],
       permissions: ['crud_email_template', 'view_email_template']
+    }
+  },
+  {
+    path: '/admin/roles',
+    component: Roles,
+    meta: {
+      auth: true,
+      permissions: ['crud_roles']
+    }
+  },
+  {
+    path: '/admin/users',
+    component: Users,
+    meta: {
+      auth: true,
+      permissions: ['crud_users']
     }
   }
 ]
