@@ -27,6 +27,17 @@ interface ICodeValue {
   disable?: boolean
 }
 type VoidFunction = () => void
+type BooleanFunction = () => boolean
+
+type TMenuItem = {
+  label: string,
+  icon?: Nullable<string>,
+  items?: Nullable<TMenuItem[]>
+  expanded?: Nullable<boolean>
+  permissions?: Nullable<string[]>
+  route?: Nullable<string>
+  active?: Nullable<boolean> | BooleanFunction
+}
 
 export type { Nullable, Optional, TMetaFileStorage, TResult, RentetrixLiteral, TCheckPermission,
-TConstants, TCan, ICodeValue, VoidFunction }
+TConstants, TCan, ICodeValue, VoidFunction, BooleanFunction, TMenuItem }

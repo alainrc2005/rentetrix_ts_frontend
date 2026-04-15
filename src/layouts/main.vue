@@ -57,6 +57,7 @@
         </div>
         <q-separator/>
         <q-list class="menu" id="mn">
+          <arc-menu-item :items="mainMenuItems"/>
           <q-item to="/" v-ripple clickable>
             <q-item-section avatar>
               <q-icon color="primary" name="mdi-view-dashboard"/>
@@ -245,6 +246,8 @@ import type { TCheckPermission } from 'src/types'
 import { useAppStore } from 'stores/app-store'
 import { v_barStyle, v_thumbStyle } from 'src/helpers/common'
 import { api } from 'boot/axios'
+import ArcMenuItem from 'components/arcMenuItem.vue'
+import { mainMenuItems } from 'layouts/main.menu'
 
 const can = inject('can') as TCheckPermission
 const route = useRoute()
